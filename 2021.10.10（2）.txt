@@ -1,0 +1,19 @@
+#include<stdio.h>
+
+int main()
+{
+	int b;
+	printf("请输入：");
+	scanf_s("%d", &b);
+	if (b>= 90)
+		printf("优秀");
+	if (b <= 90 && b >= 80)
+		printf("良好");
+	if (b < 80 && b >= 70)
+		printf("中等");
+	if (b < 70 && b >= 60)
+		printf("及格");
+	if (b < 60)
+		printf("不及格");
+
+}
