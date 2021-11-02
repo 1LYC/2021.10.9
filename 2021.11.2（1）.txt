@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+double pow(int n, int k)
+{
+	if (k == 0)
+		return 1.0;
+	else if (k > 0)
+		return n * pow(n, k - 1);
+	else
+		return 1.0 / (pow(n, -k));
+}
+int main()
+{
+	int n;
+	int k;
+	scanf("%d%d", &n, &k);
+	double ret = pow(n, k);
+	printf("%lf\n", ret);
+	return 0;
+}
