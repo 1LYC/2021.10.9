@@ -12,7 +12,7 @@ char*my_strcpy(char* des, const char* sou)
 	}
 	return ret;
 }
-int main()
+int main() 
 {
 	char arr1[20] = { "xxxxxxxxxxxxxxxxx" };
 	char arr2[] = { "hello" };
