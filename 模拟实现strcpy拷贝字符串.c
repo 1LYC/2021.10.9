@@ -3,17 +3,19 @@
 #include<assert.h>
 char*my_strcpy(char* des, const char* sou)
 {
-	assert(des != NULL);
-	assert(sou != NULL);
+	assert(des != NULL);//断言
+	assert(sou != NULL);//断言
+	char*ret = des;
 	while (*des++ = *sou++)
 	{
 		;
 	}
+	return ret;
 }
 int main()
 {
 	char arr1[20] = { "xxxxxxxxxxxxxxxxx" };
 	char arr2[] = { "hello" };
-	my_strcpy(arr1, arr2);
+	printf("&s",my_strcpy(arr1, arr2));//链式访问
 	return 0;
 }
