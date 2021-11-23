@@ -11,11 +11,11 @@ int main()
 	int ret=check(arr);
 	if (ret == 1)
 	{
-		printf("å°ç«¯\n");
+		printf("Ğ¡¶Ë\n");
 	}
 	else
 	{
-		printf("å¤§ç«¯\n");
+		printf("´ó¶Ë\n");
 	}
 	return 0;
 }
