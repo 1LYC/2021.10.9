@@ -1,18 +1,18 @@
-//#define _crt_secure_no_warnings
-////1Æ¿ÆûË®Ò»¿éÇ®£¬2¸ö¿ÕÆ¿¿ÉÒÔ»»Ò»Æ¿ÆûË®£¬¸ø20Ôª¿ÉÒÔºÈ¶àÉÙÆ¿ÆûË®£¿
-//#include<stdio.h>
-//int main()
-//{
-//	int money = 0;
-//	scanf("%d",&money);
-//	int he_shui = money;
-//	int empty = money;
-//	while (empty>1)
-//	{
-//		he_shui += (empty / 2);
-//		empty = empty / 2 + empty % 2;
-//	}
-//	printf("%d", he_shui);
-//	//×îºó·¢ÏÖºÈË®ÊıµÈÓÚ2*money-1
-//	return 0;
-//}
+#define _crt_secure_no_warnings
+//1ç“¶æ±½æ°´ä¸€å—é’±ï¼Œ2ä¸ªç©ºç“¶å¯ä»¥æ¢ä¸€ç“¶æ±½æ°´ï¼Œç»™20å…ƒå¯ä»¥å–å¤šå°‘ç“¶æ±½æ°´ï¼Ÿ
+#include<stdio.h>
+int main()
+{
+	int money = 0;
+	scanf("%d",&money);
+	int he_shui = money;
+	int empty = money;
+	while (empty>1)
+	{
+		he_shui += (empty / 2);
+		empty = empty / 2 + empty % 2;
+	}
+  	printf("%d", he_shui);
+	//æœ€åå‘ç°å–æ°´æ•°ç­‰äº2*money-1
+	return 0;
+}
