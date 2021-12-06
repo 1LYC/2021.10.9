@@ -1,16 +1,16 @@
-//#define _crt_secure_no_warnings
-////Ä³µØÈÕ±¾·¢ÉúÁËÒ»ÆğÄ±É±°¸£¬¾¯²ìÍ¨¹ıÅÅ²éÈ·¶¨É±ÈËĞ×ÊÖÎª4¸öÏÓÒÉÈËÖĞµÄÒ»¸ö
-////ÒÔÏÂÎª4¸öÏÓÒÉ·¸µÄ¹©´Ê
-////aËµ£º²»ÊÇÎÒ     bËµ£ºÊÇc     cËµ£ºÊÇd       dËµ£º²»ÊÇÎÒ
-////ÒÑÖª3¸öÈËËµÁËÕæ»°£¬1¸öÈËËµÁË¼Ù»°
-//#include<stdio.h>
-//int main()
-//{
-//	char murderer = '0';
-//	for (murderer = 'a';murderer <= 'd';murderer++)
-//	{
-//		if ((murderer != 'a') + (murderer == 'c') + (murderer == 'd') + (murderer != 'd') == 3)
-//			printf("%c", murderer);
-//	}
-//	return 0;
-//}
+#define _crt_secure_no_warnings
+//æŸåœ°æ—¥æœ¬å‘ç”Ÿäº†ä¸€èµ·è°‹æ€æ¡ˆï¼Œè­¦å¯Ÿé€šè¿‡æ’æŸ¥ç¡®å®šæ€äººå‡¶æ‰‹ä¸º4ä¸ªå«Œç–‘äººä¸­çš„ä¸€ä¸ª
+//ä»¥ä¸‹ä¸º4ä¸ªå«Œç–‘çŠ¯çš„ä¾›è¯
+//aè¯´ï¼šä¸æ˜¯æˆ‘     bè¯´ï¼šæ˜¯c     cè¯´ï¼šæ˜¯d       dè¯´ï¼šä¸æ˜¯æˆ‘
+//å·²çŸ¥3ä¸ªäººè¯´äº†çœŸè¯ï¼Œ1ä¸ªäººè¯´äº†å‡è¯
+#include<stdio.h>
+int main()
+{
+	char murderer = '0';
+	for (murderer = 'a';murderer <= 'd';murderer++)
+	{
+		if ((murderer != 'a') + (murderer == 'c') + (murderer == 'd') + (murderer != 'd') == 3)
+			printf("%c", murderer);
+	}
+	return 0;
+}
