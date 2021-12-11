@@ -1,59 +1,28 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//#include<string.h>
-//#include<assert.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<assert.h>
+
+//é¢˜ç›®å†…å®¹ï¼šå®ç°ä¸€ä¸ªå‡½æ•°ï¼Œå¯ä»¥å·¦æ—‹å­—ç¬¦ä¸²ä¸­çš„kä¸ªå­—ç¬¦
+//ä¾‹å¦‚ï¼šABCDå·¦æ—‹ä¸€ä¸ªå­—ç¬¦å¾—åˆ°BCDA,ABCDå³æ—‹ä¸¤ä¸ªå­—ç¬¦å¾—åˆ°CDAB
 //
-////ÌâÄ¿ÄÚÈİ£ºÊµÏÖÒ»¸öº¯Êı£¬¿ÉÒÔ×óĞı×Ö·û´®ÖĞµÄk¸ö×Ö·û
-////ÀıÈç£ºABCD×óĞıÒ»¸ö×Ö·ûµÃµ½BCDA,ABCDÓÒĞıÁ½¸ö×Ö·ûµÃµ½CDAB
-////
-////void string_movement(char* arr, int k)
-////{
-////	assert(arr != NULL);//¶ÏÑÔ
-////  int ret = strlen(arr);
-////	int left = 0;
-////	int right = ret - 1;
-////	int i = 0;
-////	for (i = 0;i < k;i++)
-////	{
-////		int j = 0;
-////		char tmp = arr[left];
-////		for (j = 0;j<ret-1;j++)
-////		{
-////			arr[j] = arr[j + 1];
-////		}
-////		arr[right] = tmp;
-////	}
-////}
-////
-////int main()
-////{
-////	char arr[] = "ABCDE";
-////	int k = 2;
-////	string_movement(arr, k);
-////	printf("%s", arr);
-////	return 0;
-////}
-//
-//void overturn(char* left, char*right)
+//void string_movement(char* arr, int k)
 //{
-//	assert(left);
-//	assert(right);
-//	while (left < right)
+//	assert(arr != NULL);//æ–­è¨€
+//  int ret = strlen(arr);
+//	int left = 0;
+//	int right = ret - 1;
+//	int i = 0;
+//	for (i = 0;i < k;i++)
 //	{
-//		char tmp = *left;
-//		*left = *right;
-//		*right = tmp;
-//		left++;
-//		right--;
+//		int j = 0;
+//		char tmp = arr[left];
+//		for (j = 0;j<ret-1;j++)
+//		{
+//			arr[j] = arr[j + 1];
+//		}
+//		arr[right] = tmp;
 //	}
-//}
-//
-//void string_movement(char* arr,int k)
-//{
-//	int n = strlen(arr);
-//	overturn(arr, arr+k-1);
-//	overturn(arr+k, arr+n - 1);
-//	overturn(arr, arr+n-1);
 //}
 //
 //int main()
@@ -64,3 +33,34 @@
 //	printf("%s", arr);
 //	return 0;
 //}
+
+void overturn(char* left, char*right)
+{
+	assert(left);
+	assert(right);
+	while (left < right)
+	{
+		char tmp = *left;
+		*left = *right;
+		*right = tmp;
+		left++;
+		right--;
+	}
+}
+
+void string_movement(char* arr,int k)
+{
+	int n = strlen(arr);
+	overturn(arr, arr+k-1);
+	overturn(arr+k, arr+n - 1);
+	overturn(arr, arr+n-1);
+}
+
+int main()
+{
+	char arr[] = "ABCDE";
+	int k = 2;
+	string_movement(arr, k);
+	printf("%s", arr);
+	return 0;
+}
