@@ -1,21 +1,27 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//#include<stdlib.h>
-//#include<string.h>
-//int main()
-//{
-//	char arr[10] = { 0 };
-//	system("shutdown -s -t 60");
-//	again:printf("ÇëÊäÈëÎÒÊÇÖí£¬·ñÔòµçÄÔ½«ÔÚ60Ãëºó¹Ø»ú\n");
-//	scanf("%s", arr);
-//	if (strcmp(arr, "ÎÒÊÇÖí") == 0)
-//	{
-//		system("shutdown -a");
-//	}
-//	else
-//	{
-//		printf("ÇëÖØĞÂÊäÈë");
-//		goto again;
-//	}
-//	return 0;
-//}
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+	//ä¸‰æ¬¡æœºä¼š
+	int count = 3;
+	char arr[10] = { 0 };
+	system("shutdown -s -t 60");//å…³æœºæŒ‡ä»¤
+	printf("ä½ çš„ç”µè„‘å°†åœ¨60ç§’åå…³æœºï¼Œè¯·è¾“å…¥æˆ‘æ˜¯çŒª,å–æ¶ˆå…³æœº\n");
+	while (count)
+	{
+		scanf("%s", arr);
+		if (strcmp(arr, "æˆ‘æ˜¯çŒª") == 0)
+		{
+			system("shutdown -a");//å–æ¶ˆå…³æœºæŒ‡ä»¤
+			break;
+		}
+		else
+		{
+			printf("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n");
+			count--;
+		}
+	}
+	return 0;
+}
