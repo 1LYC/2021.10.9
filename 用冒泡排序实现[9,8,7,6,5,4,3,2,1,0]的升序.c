@@ -1,12 +1,15 @@
 #define _CRT_SECURE_NO_WARNINGS
+//冒泡排序思想：两两相邻的元素进行比较，并且可能的话需要交换
 #include<stdio.h>
-void bubble_sort(int*arr, int sz)
+void bubble_sort(int* arr, int sz)
 {
+	//n为有多少个元素，这里n为10
 	int i = 0;
-	for (i = 0;i < sz - 1;i++)//一共需要9趟
+	for (i = 0;i < sz - 1;i++)//一共需要n-1趟,因为最后一个不用比较
 	{
+		//一趟中有n个数，则需要n-1次比较
 		int j = 0;
-		for (j = 0;j < sz - 1 - i;j++)//第一次最多需要9次比较，第二次最多需要8次比较....
+		for (j = 0;j < sz - 1 - i;j++)//一趟排序
 		{
 			if (arr[j] > arr[j + 1])
 			{
