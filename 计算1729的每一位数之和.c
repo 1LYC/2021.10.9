@@ -2,6 +2,7 @@
 #include<stdio.h>
 int Sum(int i)
 {
+	//递归实现
 	if (i > 9)
 	{
 		return Sum(i / 10) + i % 10;
