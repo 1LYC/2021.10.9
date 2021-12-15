@@ -1,27 +1,27 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//#include<assert.h>
-//char* my_strcat(char* dest, const char* src)
-//{
-//	char* ret = dest;
-//	assert(dest && src);
-//	//1. 找目标字符串中的\0
-//	while (*dest)
-//	{
-//		dest++;
-//	}
-//	//2. 追加源字符串,包含\0
-//	while(*dest++ = *src++)
-//	{
-//		;
-//	}
-//	return ret;//返回的目标空间的起始地址
-//}
-//
-//int main()
-//{
-//	char arr1[20] = "hello ";//world
-//	char arr2[] = "world";
-//	printf("%s\n", my_strcat(arr1, arr2));
-//	return 0;
-//}
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<assert.h>
+char* my_strcat(char* dest, const char* src)
+{
+	char* ret = dest;//璁板綍鐩爣鐨勫湴鍧�
+	assert(dest && src);
+	//1. 鎵剧洰鏍囧瓧绗︿覆涓殑\0
+	while (*dest)
+	{
+		dest++;
+	}
+	//2. 杩藉姞婧愬瓧绗︿覆,鍖呭惈\0
+	while(*dest++ = *src++)
+	{
+		;
+	}
+	return ret;//杩斿洖鐨勭洰鏍囩┖闂寸殑璧峰鍦板潃
+}
+
+int main()
+{
+	char arr1[20] = "hello ";
+	char arr2[] = "world";
+	printf("%s\n", my_strcat(arr1, arr2));
+	return 0;
+}
