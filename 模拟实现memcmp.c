@@ -1,7 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<assert.h>
-int memcmp(const char* str1, const char* str2, size_t num)
+
+int my_memcmp(const char* str1, const char* str2, size_t num)
 {
 	assert(str1 && str2);
 	while (num--)
@@ -11,7 +12,7 @@ int memcmp(const char* str1, const char* str2, size_t num)
 			str1 = (char*)str1 + 1;
 			str2 = (char*)str2 + 1;
 		}
-		else if(*(char*)str1 > *(char*)str2)
+		else if (*(char*)str1 > *(char*)str2)
 		{
 			return 1;
 		}
@@ -22,18 +23,19 @@ int memcmp(const char* str1, const char* str2, size_t num)
 	}
 	return 0;
 }
+
 int main()
 {
 	int arr1[10] = { 1,2,3,4,5,6,7,8,9,10 };
 	int arr2[10] = { 1,8,3,4,5,6,7,8,9,10 };
-	int ret = memcmp(arr1, arr2, 20);
+	int ret = my_memcmp(arr1, arr2, 20);
 	if (ret == 0)
 	{
-		printf("相等");
+		printf("鐩稿悓");
 	}
 	else
 	{
-		printf("不相等");
+		printf("涓嶅悓");
 	}
 	return 0;
 }
