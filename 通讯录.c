@@ -1,28 +1,28 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-//ͨѶ¼-��̬�汾
-//1.ͨѶ¼���ܹ����100���˵���Ϣ
-//(ÿ���˵���Ϣ������+����+�Ա�+�绰+��ַ)
-//2.�����˵���Ϣ
-//3.ɾ��ָ���˵���Ϣ
-//4.�޸�ָ���˵���Ϣ
-//5.����ָ���˵���Ϣ
-//6.����ͨѶ¼����Ϣ
-//7.��ӡͨѶ¼����Ϣ
+//通讯录-静态版本
+//1.通讯录中能够存放100个人的信息
+//(每个人的信息：名字+年龄+性别+电话+地址)
+//2.增加人的信息
+//3.删除指定人的信息
+//4.修改指定人的信息
+//5.查找指定人的信息
+//6.排序通讯录的信息
+//7.打印通讯录的信息
 
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
 
-#define MAX_NAME 20//����
-#define MAX_SEX  10//�Ա�
-#define MAX_TECE 12//�绰
-#define MAX_ADDR 30//��ַ
-#define MAX 100//����
-#define INC_SZ 2//����
-#define DEFAULT_SZ 3//��ʼ
+#define MAX_NAME 20//名字
+#define MAX_SEX  10//性别
+#define MAX_TECE 12//电话
+#define MAX_ADDR 30//地址
+#define MAX 100//人数
+#define INC_SZ 2//增容
+#define DEFAULT_SZ 3//初始
 
-//����ͨѶ¼
+//创建通讯录
 typedef struct peoinfo
 {
 	char name[MAX_NAME];
@@ -31,30 +31,30 @@ typedef struct peoinfo
 	char tecel[MAX_TECE];
 	char addr[MAX_ADDR];
 }peoinfo;
-//��̬�汾
+//静态版本
 //typedef struct contact
 //{
-//	peoinfo data[MAX];//�ṹ������
+//	peoinfo data[MAX];//结构体数组
 //	int sz;
 //}contact;
 
-//��̬�汾
+//动态版本
 typedef struct contact
 {
-	peoinfo* data;//ָ��̬����Ŀռ䣬���������ϵ�˵���Ϣ
-	int sz;//��¼���ǵ�ǰͨѶ¼����Ч��Ϣ�ĸ���
-	int capacity;//��¼��ǰͨѶ¼���������
+	peoinfo* data;//指向动态申请的空间，用来存放联系人的信息
+	int sz;//记录的是当前通讯录中有效信息的个数
+	int capacity;//记录当前通讯录的最大容量
 }contact;
 
-////��̬�汾
-////��ʼ��ͨѶ¼
+////静态版本
+////初始化通讯录
 //void Initcontact(contact* pc)
 //{
 //	pc->sz = 0;
-//	//memset�ڴ�����
+//	//memset内存设置
 //	memset(pc->data, 0, sizeof(pc->data));
 //}
-//�ж��Ƿ�����
+//判断是否增容
 void CheckCapacity(contact* pc)
 {
 	if (pc->sz == pc->capacity)
@@ -64,18 +64,18 @@ void CheckCapacity(contact* pc)
 		{
 			pc->data = ptr;
 			pc->capacity += INC_SZ;
-			printf("���ݳɹ�\n");
+			printf("增容成功\n");
 		}
 		else
 		{
 			perror("AddContact");
-			printf("������ϵ��ʧ��\n");
+			printf("增加联系人失败\n");
 			return;
 		}
 	}
 }
 
-//����ͨѶ¼
+//加载通讯录
 void LoadContact(contact* pc)
 {
 	FILE* pf = fopen("contact.dat", "r");
@@ -84,23 +84,23 @@ void LoadContact(contact* pc)
 		perror("LoadContact");
 		return;
 	}
-	//���ļ�
+	//读文件
 	peoinfo tmp = { 0 };
 	while (fread(&tmp, sizeof(peoinfo), 1, pf))
 	{
-		//�Ƿ���Ҫ����
+		//是否需要增容
 		CheckCapacity(pc);
 		pc->data[pc->sz] = tmp;
 		pc->sz++;
 	}
 
-	//�ر��ļ�
+	//关闭文件
 	fclose(pf);
 	pf = NULL;
 }
 
-//��̬�汾
-//��ʼ��ͨѶ¼
+//动态版本
+//初始化通讯录
 void Initcontact(contact* pc)
 {
 	pc->data = (peoinfo*)malloc(DEFAULT_SZ * sizeof(peoinfo));
@@ -109,17 +109,17 @@ void Initcontact(contact* pc)
 		perror("Initcontact");
 		return;
 	}
-	pc->sz = 0;//��ʼ����Ĭ����0
+	pc->sz = 0;//初始化后默认是0
 	pc->capacity = DEFAULT_SZ;
 
-	//�����ļ�
+	//加载文件
 	LoadContact(pc);
 }
 
-//��ӡͨѶ¼
+//打印通讯录
 void Printcontact(contact* pc)
 {
-	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-20s\n", "����", "����", "�Ա�", "�绰", "��ַ");
+	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-20s\n", "名字", "年龄", "性别", "电话", "地址");
 	int i = 0;
 	for (i = 0;i < pc->sz;i++)
 	{
@@ -129,53 +129,53 @@ void Printcontact(contact* pc)
 	}
 }
 
-////��̬�汾
-////�����˵���Ϣ
+////静态版本
+//增加人的信息
 //void Addcontact(contact* pc)
 //{
 //	if (pc->sz == MAX)
 //	{
-//		printf("ͨѶ¼����\n");
+//		printf("通讯录满了\n");
 //		return ;
 //	}
 //	else
 //	{
-//		printf("����\n");
+//		printf("名字\n");
 //		scanf("%s", pc->data[pc->sz].name);
-//		printf("����\n");
+//		printf("年龄\n");
 //		scanf("%d", &(pc->data[pc->sz].age));
-//		printf("�Ա�\n");
+//		printf("性别\n");
 //		scanf("%s", pc->data[pc->sz].sex);
-//		printf("�绰\n");
+//		printf("电话\n");
 //		scanf("%s", pc->data[pc->sz].tecel);
-//		printf("��ַ\n");
+//		printf("地址\n");
 //		scanf("%s", pc->data[pc->sz].addr);
 //
 //	}
 //	pc->sz++;
 //}
 
-//��̬�汾
-//�����˵���Ϣ
+//动态版本
+//增加人的信息
 void Addcontact(contact* pc)
 {
 		CheckCapacity(pc);
 
-		//����һ���˵���Ϣ
-		printf("����\n");
+		//增加一个人的信息
+		printf("名字\n");
 		scanf("%s", pc->data[pc->sz].name);
-		printf("����\n");
+		printf("年龄\n");
 		scanf("%d", &(pc->data[pc->sz].age));
-		printf("�Ա�\n");
+		printf("性别\n");
 		scanf("%s", pc->data[pc->sz].sex);
-		printf("�绰\n");
+		printf("电话\n");
 		scanf("%s", pc->data[pc->sz].tecel);
-		printf("��ַ\n");
+		printf("地址\n");
 		scanf("%s", pc->data[pc->sz].addr);
 	pc->sz++;
 }
 
-//����ָ���˵���Ϣ
+//查找指定人的信息
 int FindByName(contact* pc,char name[])
 {
 	int i = 0;
@@ -189,81 +189,81 @@ int FindByName(contact* pc,char name[])
 	return -1;
 }
 
-//ɾ��ָ���˵���Ϣ
+//删除指定人的信息
 void Delcontact(contact* pc)
 {
 	char name [MAX_NAME];
 	
 	if (pc->sz == 0)
 	{
-		printf("ͨѶ¼Ϊ�գ�����ɾ��\n");
+		printf("通讯录为空，无需删除\n");
 		return;
 	}	
-	//����ָ����
-	printf("������ָ���˵�����:>");
+	//查找指定人
+	printf("请输入指定人的名字:>");
 	scanf("%s", name);
 	int ret = FindByName(pc, name);
 	if (ret == -1)
 	{
-		printf("ͨѶ¼��û����ϵ��\n");
+		printf("通讯录中没有联系人\n");
 		return ;
 	}
-	//ɾ��ָ����
+	//删除指定人
 	int i = 0;
 	for (i = ret;i < pc->sz - 1;i++)
 	{
 		pc->data[i] = pc->data[i + 1];
 	}
 	pc->sz--;
-	printf("ɾ���ɹ�\n");
+	printf("删除成功\n");
 }
 
-//����ָ����
+//查找指定人
 void Searchcontact(contact* pc)
 {
 	char name[MAX_NAME];
-	printf("������ָ���˵�����:>");
+	printf("请输入指定人的名字:>");
 	scanf("%s", name);
 	int ret = FindByName(pc, name);
 	if (ret == -1)
 	{
-		printf("ͨѶ¼��û����ϵ��\n");
+		printf("通讯录中没有联系人\n");
 		return;
 	}
-	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-20s\n", "����", "����", "�Ա�", "�绰", "��ַ");
+	printf("%-20s\t%-5s\t%-5s\t%-12s\t%-20s\n", "名字", "年龄", "性别", "电话", "地址");
 	printf("%-20s\t%-5d\t%-5s\t%-12s\t%-20s\n",
 		pc->data[ret].name, pc->data[ret].age,
 		pc->data[ret].sex, pc->data[ret].tecel, pc->data[ret].addr);
 }
 
-//�޸�ͨѶ¼
+//修改通讯录
 void Modifycontact(contact* pc)
 {
 	char name[MAX_NAME];
-	printf("������ָ���˵�����:>");
+	printf("请输入指定人的名字:>");
 	scanf("%s", name);
 	int ret = FindByName(pc, name);
 	if (ret == -1)
 	{
-		printf("ͨѶ¼��û����ϵ��\n");
+		printf("通讯录中没有联系人\n");
 		return;
 	}
 	else
 	{
-		printf("����\n");
+		printf("名字\n");
 		scanf("%s", pc->data[ret].name);
-		printf("����\n");
+		printf("年龄\n");
 		scanf("%d", &(pc->data[ret].age));
-		printf("�Ա�\n");
+		printf("性别\n");
 		scanf("%s", pc->data[ret].sex);
-		printf("�绰\n");
+		printf("电话\n");
 		scanf("%s", pc->data[ret].tecel);
-		printf("��ַ\n");
+		printf("地址\n");
 		scanf("%s", pc->data[ret].addr);
 	}
 }
 
-//����ͨѶ¼
+//销毁通讯录
 void Destorycontact(contact* pc)
 {
 	free(pc->data);
@@ -272,7 +272,7 @@ void Destorycontact(contact* pc)
 	pc->capacity = 0;
 }
 
-//����ͨѶ¼
+//保存通讯录
 void SaveContact(contact* pc)
 {
 	FILE* pf = fopen("contact.dat", "w");
@@ -281,14 +281,14 @@ void SaveContact(contact* pc)
 		perror("SaveContact");
 		return;
 	}
-	//д�ļ�
+	//写文件
 	int i = 0;
 	for (i = 0; i < pc->sz; i++)
 	{
 		fwrite(pc->data + i, sizeof(peoinfo), 1, pf);
 	}
 
-	//�ر��ļ�
+	//关闭文件
 	fclose(pf);
 	pf = NULL;
 }
