@@ -3,9 +3,9 @@
 void menu()
 {
 	printf("*****************************\n");
-	printf("********1.¼Ó·¨**2.¼õ·¨********\n");
-	printf("********3.³Ë·¨**4.³ı·¨********\n");
-	printf("*********0.ÍË³ö³ÌĞò***********\n");
+	printf("********1.åŠ æ³•**2.å‡æ³•********\n");
+	printf("********3.ä¹˜æ³•**4.é™¤æ³•********\n");
+	printf("*********0.é€€å‡ºç¨‹åº***********\n");
 	printf("*****************************\n");
 }
 int add(int x, int y)
@@ -27,39 +27,38 @@ int div(int x, int y)
 int main()
 {
 	int input = 0;
-	
 	do
 	{
 		menu();
-		int (*parr[5])(int, int) = { NULL,add,sub,nul,div };//Ó¦ÓÃÁËº¯ÊıÊı×éÖ¸Õë
+		int (*parr[5])(int, int) = { NULL,add,sub,nul,div };//åº”ç”¨äº†å‡½æ•°æ•°ç»„æŒ‡é’ˆ
 		int x = 0;
 		int y = 0;
-		printf("ÇëÊäÈëÄãµÄÑ¡Ôñ£º>");
+		printf("è¯·è¾“å…¥ä½ çš„é€‰æ‹©ï¼š>");
 		scanf("%d", &input);
 		if (input >= 1 && input <= 4)
 		{
-			printf("ÇëÊäÈëÁ½¸ö²Ù×÷Êı£º>");
+			printf("è¯·è¾“å…¥ä¸¤ä¸ªæ“ä½œæ•°ï¼š>");
 			scanf("%d %d", &x, &y);
-			int ret = (parr[input])(x, y);//µ÷ÓÃÁËº¯ÊıÊı×é
+			int ret = (parr[input])(x, y);//è°ƒç”¨äº†å‡½æ•°æ•°ç»„
 			printf("%d\n", ret);
 		}
 		else if(input == 0)
 		{
-			printf("ÍË³ö³ÌĞò\n");
+			printf("é€€å‡ºç¨‹åº\n");
 			break;
 		}
 		else
 		{
-			printf("Ñ¡Ôñ´íÎó\n");
+			printf("é€‰æ‹©é”™è¯¯\n");
 		}
 	} while (input);
 	return 0;
 }
 
-//Ó¦ÓÃÁËº¯Êı»Øµ÷»úÖÆ£¬Ê¹ÓÃÁËº¯ÊıÖ¸Õë
+//åº”ç”¨äº†å‡½æ•°å›è°ƒæœºåˆ¶ï¼Œä½¿ç”¨äº†å‡½æ•°æŒ‡é’ˆ
 //void calc(int (*pt)(int x,int y))
 //{
-//	printf("ÇëÊäÈëÁ½¸ö²Ù×÷Êı£º>");
+//	printf("è¯·è¾“å…¥ä¸¤ä¸ªæ“ä½œæ•°ï¼š>");
 //	int x = 0;
 //	int y = 0;
 //	scanf("%d %d", &x, &y);
@@ -72,7 +71,7 @@ int main()
 //	do
 //	{
 //		menu();
-//		printf("ÇëÊäÈëÄãµÄÑ¡Ôñ£º>");
+//		printf("è¯·è¾“å…¥ä½ çš„é€‰æ‹©ï¼š>");
 //		scanf("%d", &input);
 //		switch (input)
 //		{
@@ -91,11 +90,11 @@ int main()
 //		default:
 //			if (input == 0)
 //			{
-//				printf("ÍË³ö³ÌĞò\n");
+//				printf("é€€å‡ºç¨‹åº\n");
 //			}
 //			else
 //			{
-//				printf("Ñ¡Ôñ´íÎó\n");
+//				printf("é€‰æ‹©é”™è¯¯\n");
 //			}
 //			break;
 //		}
