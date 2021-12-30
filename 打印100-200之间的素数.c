@@ -5,19 +5,21 @@ int main()
 {
 	int i = 0;
 	int count = 0;
-	for (i = 101;i <= 200;i+=2)
+	for (i = 101;i <= 200;i += 2)//因为偶数不可能是素数
 	{
 		int j = 0;
-		int flag = 1;
-		for (j = 2;j <=sqrt(i);j++)
+		for (j = 2;j < sqrt(i)+1;j++)
 		{
-			
+
 			if (i % j == 0)
 			{
-				flag = 0;
+				break;
 			}
 		}
-		if (flag)
+		//此时跳出循环，有两种情况，
+		//一种是i被一个不是1，且不是它本身的数整除了，跳出循环，此时j<sqrt(i)+1
+		//另外一种是循环完了，都没有找到，跳出循环，此时j>sqrt(i),因为最后j++
+		if (j > sqrt(i))
 		{
 			printf("%d ", i);
 			count++;
