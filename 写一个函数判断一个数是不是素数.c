@@ -1,28 +1,28 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//#include<math.h>
-//void my_sushu(int a)
-//{
-//	int i = 0;
-//	for (i = 2;i < a;i++)
-//	{
-//		if (a % i == 0)
-//		{
-//			printf("不是素数\n");
-//			break;
-//		}
-//		if ((a % i != 0) && (i==a-1))
-//		{
-//			printf("是素数\n");
-//			break;
-//		}
-//	}
-//	
-//}
-//int main()
-//{
-//	int a = 0;
-//	scanf("%d", &a);
-//	my_sushu(a);
-//	return 0;
-//}
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int prime_num(int num)
+{
+	int i = 0;
+	for (i = 3;i < num;i++)
+	{
+		if (num % i == 0)
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int main()
+{
+	int i = 0;
+	for (i = 101;i < 201;i+=2)
+	{
+		int is_num = prime_num(i);
+		if (is_num == 1)
+		{
+			printf("%d ", i);
+		}
+	}
+	return 0;
+}
