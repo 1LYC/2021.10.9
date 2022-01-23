@@ -13,6 +13,6 @@ int main()
 		empty = empty / 2 + empty % 2;
 	}
   	printf("%d", he_shui);
-	//最后发现喝水数等于2*money-1
+	//最后发现喝水数等于2*money-1     
 	return 0;
 }
