@@ -1,57 +1,50 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//void swap(char* buf1, char* buf2, int width)
-//{
-//	//ÕâÀïÒ²ÊÇ²»ÖªµÀÒªÅÅĞòÊ²Ã´Êı×é£¬ËùÒÔ½«ÆäÇ¿ÖÆÀàĞÍ×ª»»³Échar*
-//	//Ê¹ÔªËØÒ»¸ö×Ö½ÚÒ»¸ö×Ö½ÚµÄ½»»»
-//	int i = 0;
-//	for (i = 0;i < width;i++)
-//	{
-//		char tmp = *buf1;
-//		*buf1 = *buf2;
-//		*buf2 = tmp;
-//		buf1++;
-//		buf2++;
-//	}
-//}
-//
-//int cmp(const void* e1, const void* e2)
-//{
-//	//Õâ¸öĞèÒªÊ¹ÓÃÕß×Ô¼ºÉè¼ÆÒ»¸ö±È½Ïº¯Êı
-//	return *(int*)e1 - *(int*)e2;//Õâ¸öÊÇÉıĞò£¬½«e1ºÍe2µÄÎ»ÖÃ»¥»»£¬Ôò±ä³É½µĞò
-//}
-//
-//void sort(void* base, int num, int size, int (*cmp)(const void*, const void*))
-//{
-//	//baseÊÇ´æ·ÅµÄÊÇ´ıÅÅĞòÊı×éÖĞµÄµÚÒ»¸ö¶ÔÏóµÄµØÖ·
-//	//numÊÇÊı×éÔªËØµÄ¸öÊı
-//	//sizeÊÇÒ»¸öÔªËØÕ¼¼¸¸ö×Ö½Ú
-//	//cmpĞèÒªÊ¹ÓÃÕß×Ô¼ºÉè¼Æ£¬ÕâÀïÓÃº¯ÊıÖ¸Õë½ÓÊÕ
-//	int i = 0;
-//	for (i = 0;i < num - 1;i++)
-//	{
-//		int j = 0;
-//		for (j = 0;j < num - 1 - i;j++)
-//		{
-//			if (cmp((char*)base + j * size, (char*)base + (j+1)* size)>0)
-//			{
-//				//ÕâÀïÒòÎª²»ÖªµÀÊ¹ÓÃÕßÒªÅÅĞòÊ²Ã´Êı×é£¬ËùÒÔÇ¿ÖÆÀàĞÍ×ª»»³Échar*,
-//				//char*ÄÜÒ»¸ö×Ö½ÚÒ»¸ö×Ö½ÚµÄ·ÃÎÊ£¬ÕâÑù¾ÍÄÜÕÒµ½Êı×éÖĞµÄÔªËØ
-//				swap((char*)base + j * size, (char*)base + (j + 1) * size,size);
-//			}
-//		}
-//	}
-//}
-//
-//int main()
-//{
-//	int arr[] = { 9,8,7,6,5,4,3,2,1,0, };
-//	int sz = sizeof(arr) / sizeof(arr[0]);
-//	sort(arr, sz, sizeof(arr[0]), cmp);
-//	int n = 0;
-//	for (n = 0;n < sz;n++)
-//	{
-//		printf("%d ", arr[n]);
-//	}
-//	return 0;
-//}
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+int int_cmp(const void* e1, const void* e2)//è¿™ä¸ªå‡½æ•°æ˜¯éœ€è¦ä½¿ç”¨è€…è‡ªå·±ç¡®å®šçš„ã€‚
+{
+	return (*(int*)e1 - *(int*)e2);//å¦‚æœäº¤æ¢e1å’Œe2çš„å€¼ï¼Œå°†è¿›è¡Œé™åº
+}
+
+void _swap(void* p1, void* p2, int size) 
+{
+	//æœ‰äº†å…ƒç´ çš„ç±»å‹ï¼Œæ‰èƒ½ä¸€ä¸ªå­—èŠ‚ä¸€ä¸ªå­—èŠ‚çš„è®¿é—®
+	int i = 0;
+	for (i = 0; i < size; i++)
+	{
+		char tmp = *((char*)p1 + i);
+		*((char*)p1 + i) = *((char*)p2 + i);
+		*((char*)p2 + i) = tmp;
+	}
+}
+
+void qsort_bubble(void* base, int count, int size, int(*cmp)(void* e1, void* e2))
+{
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < count - 1; i++)
+	{
+		for (j = 0; j < count - i - 1; j++)
+		{
+			//ä¸Šé¢ä¸¤ä¸ªå¾ªç¯å°±åƒå†’æ³¡æ’åºçš„ä¸€æ ·çš„è®¾è®¡æ€è·¯
+			if (cmp((char*)base + j * size, (char*)base + (j + 1) * size) > 0)//æ¯”è¾ƒä¸¤ä¸ªå…ƒç´ çš„å¤§å°
+			{
+				//äº¤æ¢ä¸¤ä¸ªå…ƒç´ çš„ä½ç½®ï¼Œ
+				_swap((char*)base + j * size, (char*)base + (j + 1) * size, size);//éœ€è¦ä¼ å…¥å…ƒç´ çš„ç±»å‹ï¼Œ
+			}
+		}
+	}
+}
+
+int main()
+{
+	int arr[] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 0 };
+	//char *arr[] = {"aaaa","dddd","cccc","bbbb"};
+	int i = 0;
+	qsort_bubble(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), int_cmp);
+	for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+	return 0;
+}
