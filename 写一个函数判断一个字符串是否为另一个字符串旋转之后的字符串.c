@@ -1,74 +1,40 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//#include<string.h>
-//#include<assert.h>
-////Àı×Ó£º¸ø¶¨s1=AABCDºÍs2=BCDAA,·µ»Ø1,¸ø¶¨s1=abcdºÍs2=ABCD,·µ»Ø0
-////AABCDÓÒĞıÒ»¸ö×Ö·ûµÃµ½ABCDA
-////AABCD×óĞıÁ½¸ö×Ö·ûµÃµ½BCDAA
-////AABCDÓÒĞıÒ»¸ö×Ö·ûµÃµ½DAABC
-//
-////int string_movement(char* arr,char*art)
-////{
-////	assert(arr != NULL);//¶ÏÑÔ
-////	int ret = strlen(arr);
-////	int left = 0;
-////	int right = ret - 1;
-////	int i = 0;
-////	for (i = 0;i < ret;i++)
-////	{
-////		int j = 0;
-////		char tmp = arr[left];
-////		for (j = 0;j < ret - 1;j++)
-////		{
-////			arr[j] = arr[j + 1];
-////		}
-////		arr[right] = tmp;
-////		if (strcmp(arr, art) == 0)
-////		{
-////			return 1;
-////		}
-////	}
-////	return 0;
-////}
-////
-////int main()
-////{
-////	char arr[] = "ABCDE";
-////	char art[] = "BCDEA";
-////	int ret = string_movement(arr,art);
-////	if (ret == 1)
-////	{
-////		printf("yes");
-////	}
-////	else
-////	{
-////		printf("no");
-////	}
-////	return 0;
-////}
-//int string_movement(char*str1,char*str2)
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<assert.h>
+//ä¾‹å­ï¼šç»™å®šs1=AABCDå’Œs2=BCDAA,è¿”å›1,ç»™å®šs1=abcdå’Œs2=ABCD,è¿”å›0
+//AABCDå³æ—‹ä¸€ä¸ªå­—ç¬¦å¾—åˆ°ABCDA
+//AABCDå·¦æ—‹ä¸¤ä¸ªå­—ç¬¦å¾—åˆ°BCDAA
+//AABCDå³æ—‹ä¸€ä¸ªå­—ç¬¦å¾—åˆ°DAABC
+
+//int string_movement(char* arr,char*art)
 //{
-//	assert(str1);
-//	assert(str2);
-//	//³¤¶È²»ÏàµÈ£¬¿Ï¶¨²»ÊÇĞı×ªµÃµ½µÄ
-//	if (strlen(str1) != strlen(str2))
+//	assert(arr != NULL);//æ–­è¨€
+//	int ret = strlen(arr);
+//	int left = 0;
+//	int right = ret - 1;
+//	int i = 0;
+//	for (i = 0;i < ret;i++)
 //	{
-//		return 0;
+//		int j = 0;
+//		char tmp = arr[left];
+//		for (j = 0;j < ret - 1;j++)
+//		{
+//			arr[j] = arr[j + 1];
+//		}
+//		arr[right] = tmp;
+//		if (strcmp(arr, art) == 0)
+//		{
+//			return 1;
+//		}
 //	}
-//	//1.str1×Ö·û´®µÄºó±ß×·¼ÓÒ»¸östr1
-//	//ABCDEABCDE
-//	int len = strlen(str1);
-//	strncat(str1, str1, len);
-//	//2.ÅĞ¶Ïstr2ÊÇ·ñÎªstr1µÄ×Ö´®
-//	char* ret = strstr(str1, str2);
-//	//strstrµÄ·µ»ØÖ¸Ïòstr1ÖĞµÚÒ»´Î³öÏÖstr2µÄÖ¸Õë£¬Èç¹ûstr2²»ÊÇstr1µÄÒ»²¿·Ö£¬Ôò·µ»Ø¿ÕÖ¸Õë¡£
-//	return ret != NULL;
+//	return 0;
 //}
 //
 //int main()
 //{
-//	char arr[20] = "ABCDE";
-//	char art[20] = "BCDEA";
+//	char arr[] = "ABCDE";
+//	char art[] = "BCDEA";
 //	int ret = string_movement(arr,art);
 //	if (ret == 1)
 //	{
@@ -80,3 +46,37 @@
 //	}
 //	return 0;
 //}
+int string_movement(char*str1,char*str2)
+{
+	assert(str1);
+	assert(str2);
+	//é•¿åº¦ä¸ç›¸ç­‰ï¼Œè‚¯å®šä¸æ˜¯æ—‹è½¬å¾—åˆ°çš„
+	if (strlen(str1) != strlen(str2))
+	{
+		return 0;
+	}
+	//1.str1å­—ç¬¦ä¸²çš„åè¾¹è¿½åŠ ä¸€ä¸ªstr1
+	//ABCDEABCDE
+	int len = strlen(str1);
+	strncat(str1, str1, len);
+	//2.åˆ¤æ–­str2æ˜¯å¦ä¸ºstr1çš„å­—ä¸²
+	char* ret = strstr(str1, str2);
+	//strstrçš„è¿”å›æŒ‡å‘str1ä¸­ç¬¬ä¸€æ¬¡å‡ºç°str2çš„æŒ‡é’ˆï¼Œå¦‚æœstr2ä¸æ˜¯str1çš„ä¸€éƒ¨åˆ†ï¼Œåˆ™è¿”å›ç©ºæŒ‡é’ˆã€‚
+	return ret != NULL;
+}
+
+int main()
+{
+	char arr[20] = "ABCDE";
+	char art[20] = "BCDEA";
+	int ret = string_movement(arr,art);
+	if (ret == 1)
+	{
+		printf("yes");
+	}
+	else
+	{
+		printf("no");
+	}
+	return 0;
+}
