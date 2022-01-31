@@ -23,3 +23,5 @@ int main()
 	printf("%.2f", (sum - min - max) / 5.0);
 	return 0;
 }
+
+
