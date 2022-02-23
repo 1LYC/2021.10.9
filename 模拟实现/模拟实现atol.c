@@ -1,77 +1,77 @@
-//#define _CRT_SECURE_NO_WARNINGS
-//#include<stdio.h>
-//#include<stdlib.h>
-//#include<ctype.h>
-////atol°Ñ×Ö·û´®×ª»»³ÉÕûÊý
-////ÐèÒª¿¼ÂÇ
-////1.¿ÕÖ¸Õë
-////2.¿Õ×Ö·û´®
-////3.Óöµ½·ÇÊý×Ö×Ö·û
-////4.Êý×ÖÌ«´ó³¬³ö·¶Î§
-//enum my_enum
-//{
-//	illegal,//²»ºÏ·¨
-//	legal,//ºÏ·¨
-//};
-//
-//enum my_enum state = illegal;
-//long int my_atol(const char* str)
-//{
-//	int flag = 1;
-//	if (str == NULL)
-//	{
-//		return 0;
-//	}
-//	while (isspace(*str))
-//	{
-//		str++;
-//	}
-//	if (*str == '+')
-//	{
-//		flag = 1;
-//		str++;
-//	}
-//	if (*str == '-')
-//	{
-//		flag = -1;
-//		str++;
-//	}
-//	long long n = 0;
-//	while (isdigit(*str))
-//	{
-//		n = n * 10 + flag*(*str - '0');
-//		//ÅÐ¶ÏÊÇ·ñ³¬¹ý·¶Î§
-//		if (n > INT_MAX || n < INT_MIN)
-//		{
-//			return 0;
-//		}
-//		str++;
-//	}
-//	if (*str == '\0')
-//	{
-//		state = legal;
-//		return (int)n;
-//	}
-//	else
-//	{
-//		//state = illegal;
-//		return (int)n;
-//	}
-//}
-//int main()
-//{
-//	//ÔÝÊ±ÏÈ¿¼ÂÇÕâ¼¸ÖÖÇé¿ö°É
-//	//const char* pr = "NULL";
-//	//const char* pr = "     1234abcd";
-//	const char* pr = "12345666666666666666666666666";
-//	int ret = my_atol(pr);
-//	if (state == legal)
-//	{
-//		printf("´Ë½á¹ûºÏ·¨£º%d", ret);
-//	}
-//	else
-//	{
-//		printf("´Ë½á¹û²»ºÏ·¨£º%d", ret);
-//	}
-//	return  0;
-//}
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+//atolæŠŠå­—ç¬¦ä¸²è½¬æ¢æˆæ•´æ•°
+//éœ€è¦è€ƒè™‘
+//1.ç©ºæŒ‡é’ˆ
+//2.ç©ºå­—ç¬¦ä¸²
+//3.é‡åˆ°éžæ•°å­—å­—ç¬¦
+//4.æ•°å­—å¤ªå¤§è¶…å‡ºèŒƒå›´
+enum my_enum
+{
+	illegal,//ä¸åˆæ³•
+	legal,//åˆæ³•
+};
+
+enum my_enum state = illegal;
+long int my_atol(const char* str)
+{
+	int flag = 1;
+	if (str == NULL)
+	{
+		return 0;
+	}
+	while (isspace(*str))
+	{
+		str++;
+	}
+	if (*str == '+')
+	{
+		flag = 1;
+		str++;
+	}
+	if (*str == '-')
+	{
+		flag = -1;
+		str++;
+	}
+	long long n = 0;
+	while (isdigit(*str))
+	{
+		n = n * 10 + flag*(*str - '0');
+		//åˆ¤æ–­æ˜¯å¦è¶…è¿‡èŒƒå›´
+		if (n > INT_MAX || n < INT_MIN)
+		{
+			return 0;
+		}
+		str++;
+	}
+	if (*str == '\0')
+	{
+		state = legal;
+		return (int)n;
+	}
+	else
+	{
+		//state = illegal;
+		return (int)n;
+	}
+}
+int main()
+{
+	//æš‚æ—¶å…ˆè€ƒè™‘è¿™å‡ ç§æƒ…å†µå§
+	//const char* pr = "NULL";
+	//const char* pr = "     1234abcd";
+	const char* pr = "12345666666666666666666666666";
+	int ret = my_atol(pr);
+	if (state == legal)
+	{
+		printf("æ­¤ç»“æžœåˆæ³•ï¼š%d", ret);
+	}
+	else
+	{
+		printf("æ­¤ç»“æžœä¸åˆæ³•ï¼š%d", ret);
+	}
+	return  0;
+}
