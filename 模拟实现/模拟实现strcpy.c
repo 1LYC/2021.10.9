@@ -16,6 +16,6 @@ int main()
 {
 	char arr1[20] = { "xxxxxxxxxxxxxxxxx" };
 	char arr2[] = { "hello" };
-	printf("&s",my_strcpy(arr1, arr2));//链式访问
+	printf("%s",my_strcpy(arr1, arr2));//链式访问
 	return 0;
 }
