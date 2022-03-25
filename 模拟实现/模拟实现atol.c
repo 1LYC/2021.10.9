@@ -14,32 +14,28 @@ enum my_enum
 	legal,//合法
 };
 
-enum my_enum state = illegal;
+enum my_enum g_state = illegal;
+
 long int my_atol(const char* str)
 {
 	int flag = 1;
-	if (str == NULL)
-	{
+	if (str == NULL){
 		return 0;
 	}
-	while (isspace(*str))
-	{
+	while (isspace(*str)){
 		str++;
 	}
-	if (*str == '+')
-	{
+	if (*str == '+'){
 		flag = 1;
 		str++;
 	}
-	if (*str == '-')
-	{
+	if (*str == '-'){
 		flag = -1;
 		str++;
 	}
 	long long n = 0;
-	while (isdigit(*str))
-	{
-		n = n * 10 + flag*(*str - '0');
+	while (isdigit(*str)){
+		n = n * 10 + flag * (*str - '0');
 		//判断是否超过范围
 		if (n > INT_MAX || n < INT_MIN)
 		{
@@ -47,17 +43,16 @@ long int my_atol(const char* str)
 		}
 		str++;
 	}
-	if (*str == '\0')
-	{
-		state = legal;
+	if (*str == '\0'){
+		g_state = legal;
 		return (int)n;
 	}
-	else
-	{
-		//state = illegal;
+	else{
+		//g_state = illegal;
 		return (int)n;
 	}
 }
+
 int main()
 {
 	//暂时先考虑这几种情况吧
@@ -65,12 +60,10 @@ int main()
 	//const char* pr = "     1234abcd";
 	const char* pr = "12345666666666666666666666666";
 	int ret = my_atol(pr);
-	if (state == legal)
-	{
+	if (g_state == legal){
 		printf("此结果合法：%d", ret);
 	}
-	else
-	{
+	else{
 		printf("此结果不合法：%d", ret);
 	}
 	return  0;
