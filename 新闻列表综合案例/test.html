@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>新闻列表综合案例</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none; 
+		}
+		/*最外面的大盒子*/
+		.set {
+			width: 298px;
+			height: 198px;
+			/*背景图片*/
+			background: url(line.jpg);
+			border: 1px solid #cccccc;
+			margin: 100px auto;
+			padding: 15px;
+		}
+		/*第一个小盒子*/
+		.set h2 {
+			font-size: 18px;
+	   	 	padding: 5px 0;
+	   	 	border-bottom: 1px solid #ccc;
+	   	 	margin-bottom: 10px;
+		}
+		.set ul li{ 
+			height: 30px;
+	   		line-height: 30px;
+	   		/*background-color: pink;*/
+	   		border-bottom: 1px dashed #ccc;
+	   		background: url(arr.jpg) no-repeat 5px center;
+	   		/*因为这个li 没有宽度 所以padding 不会撑开盒子*/
+		}
+		.set ul li a {
+			text-align: center;
+			font: 12px "微软雅黑";
+			color: #333;
+			text-decoration: none;
+			/*通过改变padding-left使文字远离背景，以免重叠*/
+			padding-left: 20px;
+		}
+		.set ul li a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+	<div class="set">
+		<h2>最新文章/New Articles</h2>
+		<ul>
+			<li><a href="#">北京招聘网页设计，平面设计，php</a></li>
+			<li><a href="#">体验javascript的魅力</a></li>
+			<li><a href="#">jquery世界来临</a></li>
+			<li><a href="#">网页设计师的梦想</a></li>
+			<li><a href="#">jquery中的链式编程是什么</a></li>
+		</ul>
+	</div>
+</body>
+</html>
