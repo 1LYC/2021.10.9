@@ -39,9 +39,13 @@ a {
 
 /*<!-- 头部模块开始 -->*/
 .header {
+	position: fixed;
+	/*未完成,缩放有问题，以后一定解决*/
+	padding:15px 30px 15px 30px;
+	margin: 0 auto;
 	height: 42px;
-	/*background-color: pink;*/
-	margin: 30px auto;
+	width: 100%;
+	background-color: #F3F5F7;
 }
 .logo {
 	float: left;
@@ -101,6 +105,28 @@ a {
 	height: 100%;
 }
 /*<!-- 头部模块结束 -->*/
+/*<!-- 测导航栏模块开始 -->*/
+.left_nav {
+	/*未完成,缩放有问题，以后一定解决*/
+	position: absolute;
+	top: 141%;
+	left: 6%;
+	width: 182px;
+	height: 430px;
+	background-color: #fff;
+}
+.left_nav li{
+	margin: 16px;
+}
+.left_nav a {
+	color: #000;
+	font-size: 14px;
+	text-align: left;
+}
+.left_nav a:hover {
+	color: #00a4ff;
+}
+/*<!-- 测导航栏模块结束78 -->*/
 
 /*<!-- banner模块开始 -->*/
 .banner {
@@ -210,6 +236,14 @@ a {
 /*<!-- goods模块结束 -->*/
 
 /*<!-- box1模块开始 -->*/
+.box1-bd .hot {
+	position: absolute;
+	top: 4px;
+	right: -4px;
+	width: 40px;
+	height: 24px;
+}
+
 /*这里我想一行显示，也想多行显示，所以不方便给高度*/
 .box1 {
 	margin-top: 15px;
@@ -239,6 +273,7 @@ a {
 	width: 1216px;
 }
 .box1-bd li {
+	position: relative;
 	float: left;
 	margin-right: 15px;
 	margin-bottom: 15px;
@@ -450,4 +485,4 @@ a {
 .linkright a:hover {
 	color:#00a4ff;
 }
-/*<!-- foot模块结束 -->*/
+/*<!-- foot模块结束 -->
